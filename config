@@ -28,12 +28,6 @@ proxy-groups:
     type: select
     use:
       - myproxy
-  - name: AD拦截
-    type: select
-    proxies:
-      - DIRECT
-      - PROXY
-      - REJECT
   - name: BiliBili
     type: select
     use:
@@ -110,24 +104,6 @@ rule-providers:
     behavior: domain
     url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt
     path: ./ruleset/reject.yaml
-    interval: 86400
-  去广告:
-    type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Domain.yaml
-    path: ./ruleset/去广告.yaml
-    interval: 86400
-  AdGuardSDNSFilter:
-    type: http
-    behavior: domain
-    url: https://ghproxy.com/https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.yaml
-    path: ./ruleset/AdGuardSDNSFilter.yaml
-    interval: 86400
-  EasyPrivacy:
-    type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EasyPrivacy/EasyPrivacy_Domain.yaml
-    path: ./ruleset/EasyPrivacy.yaml
     interval: 86400
   icloud:
     type: http
@@ -240,9 +216,6 @@ rules:
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,DIRECT
   - RULE-SET,reject,REJECT
-  - RULE-SET,去广告,AD拦截
-  - RULE-SET,AdGuardSDNSFilter,AD拦截
-  - RULE-SET,EasyPrivacy,AD拦截
   - RULE-SET,icloud,Apple
   - RULE-SET,apple,Apple
   - RULE-SET,telegramcidr,Telegram,no-resolve
