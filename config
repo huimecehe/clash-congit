@@ -28,10 +28,10 @@ proxy-providers:
 proxy-groups:
   - name: PROXY
     type: select
-        proxies:
-      - DIRECT
     use:
       - myproxy
+    proxies:
+      - DIRECT
   - name: BiliBili
     type: select
     proxies:
