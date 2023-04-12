@@ -214,6 +214,7 @@ rule-providers:
 rules:
   - RULE-SET,bilibili,BiliBili
   - RULE-SET,nintendo,Nintendo
+  - RULE-SET,steamCN,DIRECT
   - RULE-SET,game,GAME
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
@@ -226,7 +227,6 @@ rules:
   - RULE-SET,youtube,YouTube
   - RULE-SET,google,Google
   - RULE-SET,streaming,GlobalMedia
-  - RULE-SET,steamCN,DIRECT
   - RULE-SET,steam,Steam
   - RULE-SET,proxy,PROXY
   - RULE-SET,direct,DIRECT
