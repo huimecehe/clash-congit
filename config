@@ -28,78 +28,80 @@ proxy-providers:
 proxy-groups:
   - name: PROXY
     type: select
+        proxies:
+      - DIRECT
     use:
       - myproxy
   - name: BiliBili
     type: select
-    use:
-      - myproxy
     proxies:
       - DIRECT
       - PROXY
+    use:
+      - myproxy
   - name: Nintendo
     type: select
+    proxies:
+      - PROXY
+      - DIRECT
     use:
       - myproxy
-    proxies:
-      - DIRECT
-      - PROXY
   - name: GAME
     type: select
+    proxies:
+      - PROXY
+      - DIRECT
     use:
       - myproxy
-    proxies:
-      - DIRECT
-      - PROXY
   - name: Apple
     type: select
+    proxies:
+      - PROXY
+      - DIRECT
     use:
       - myproxy
-    proxies:
-      - DIRECT
-      - PROXY
   - name: Telegram
     type: select
+    proxies:
+      - PROXY
+      - DIRECT
     use:
       - myproxy
-    proxies:
-      - DIRECT
-      - PROXY
   - name: YouTube
     type: select
+    proxies:
+      - PROXY
+      - DIRECT
     use:
       - myproxy
-    proxies:
-      - DIRECT
-      - PROXY
   - name: Google
     type: select
+    proxies:
+      - PROXY
+      - DIRECT
     use:
       - myproxy
-    proxies:
-      - DIRECT
-      - PROXY
   - name: GlobalMedia
     type: select
+    proxies:
+      - PROXY
+      - DIRECT
     use:
       - myproxy
-    proxies:
-      - DIRECT
-      - PROXY
   - name: Steam
     type: select
+    proxies:
+      - PROXY
+      - DIRECT
     use:
       - myproxy
-    proxies:
-      - DIRECT
-      - PROXY
   - name: Others
     type: select
+    proxies:
+      - DIRECT
+      - PROXY
     use:
       - myproxy
-    proxies:
-      - PROXY
-      - DIRECT
 rule-providers:
   reject:
     type: http
