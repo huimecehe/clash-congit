@@ -1,11 +1,13 @@
 mixed-port: 7890
 allow-lan: true
+bind-address: '*'
 mode: rule
 log-level: info
 ipv6: true
+external-controller: '127.0.0.1:9090'
 dns:
     enable: true
-    ipv6: true
+    ipv6: false
     default-nameserver: [223.5.5.5, 119.29.29.29]
     enhanced-mode: fake-ip
     fake-ip-range: 198.18.0.1/16
@@ -16,7 +18,7 @@ dns:
 proxy-providers:
   myproxy:
     type: http
-    url: https://a.ppconverter.eu.org/api/convert?url=https%3A%2F%2Fa.xingjiabijichang.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3D158defc9d4d919202eb0a26a81349f4d&target=clash
+    url: https://a.ppconverter.eu.org/api/convert?url=https%3A%2F%2Fv1.efshop.cc%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3De1fab658b988422550efc7c4e362ff9c&target=clash
     interval: 172800
     path: ./myproxy.yaml
     health-check:
