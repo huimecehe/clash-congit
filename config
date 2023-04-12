@@ -1,0 +1,260 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: true
+dns:
+    enable: true
+    ipv6: true
+    default-nameserver: [223.5.5.5, 119.29.29.29]
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
+    fallback: ['https://doh.dns.sb/dns-query', 'https://dns.cloudflare.com/dns-query', 'https://dns.twnic.tw/dns-query', 'tls://8.8.4.4:853']
+    fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
+proxy-providers:
+  myproxy:
+    type: http
+    url: https://a.ppconverter.eu.org/api/convert?url=https%3A%2F%2Fa.xingjiabijichang.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3D158defc9d4d919202eb0a26a81349f4d&target=clash
+    interval: 172800
+    path: ./myproxy.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+proxy-groups:
+  - name: PROXY
+    type: select
+    use:
+      - myproxy
+  - name: AD拦截
+    type: select
+    proxies:
+      - DIRECT
+      - PROXY
+      - REJECT
+  - name: BiliBili
+    type: select
+    use:
+      - myproxy
+    proxies:
+      - DIRECT
+      - PROXY
+  - name: Nintendo
+    type: select
+    use:
+      - myproxy
+    proxies:
+      - DIRECT
+      - PROXY
+  - name: GAME
+    type: select
+    use:
+      - myproxy
+    proxies:
+      - DIRECT
+      - PROXY
+  - name: Apple
+    type: select
+    use:
+      - myproxy
+    proxies:
+      - DIRECT
+      - PROXY
+  - name: Telegram
+    type: select
+    use:
+      - myproxy
+    proxies:
+      - DIRECT
+      - PROXY
+  - name: YouTube
+    type: select
+    use:
+      - myproxy
+    proxies:
+      - DIRECT
+      - PROXY
+  - name: Google
+    type: select
+    use:
+      - myproxy
+    proxies:
+      - DIRECT
+      - PROXY
+  - name: GlobalMedia
+    type: select
+    use:
+      - myproxy
+    proxies:
+      - DIRECT
+      - PROXY
+  - name: Steam
+    type: select
+    use:
+      - myproxy
+    proxies:
+      - DIRECT
+      - PROXY
+  - name: Others
+    type: select
+    use:
+      - myproxy
+    proxies:
+      - PROXY
+      - DIRECT
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt
+    path: ./ruleset/reject.yaml
+    interval: 86400
+  去广告:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Domain.yaml
+    path: ./ruleset/去广告.yaml
+    interval: 86400
+  AdGuardSDNSFilter:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.yaml
+    path: ./ruleset/AdGuardSDNSFilter.yaml
+    interval: 86400
+  EasyPrivacy:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EasyPrivacy/EasyPrivacy_Domain.yaml
+    path: ./ruleset/EasyPrivacy.yaml
+    interval: 86400
+  icloud:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+  apple:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt
+    path: ./ruleset/apple.yaml
+    interval: 86400
+  streaming:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/Streaming.yaml
+    path: ./ruleset/streaming.yaml
+    interval: 86400
+  steam:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
+    path: ./ruleset/steam.yaml
+    interval: 86400
+  steamCN:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml
+    path: ./ruleset/steamCN.yaml
+    interval: 86400
+  youtube:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+    path: ./ruleset/youtube.yaml
+    interval: 86400
+  google:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt
+    path: ./ruleset/google.yaml
+    interval: 86400
+  proxy:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+  direct:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt
+    path: ./ruleset/direct.yaml
+    interval: 86400
+  private:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt
+    path: ./ruleset/private.yaml
+    interval: 86400
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+  applications:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt
+    path: ./ruleset/applications.yaml
+    interval: 86400
+  bilibili:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
+    path: ./ruleset/bilibili.yaml
+    interval: 86400
+  nintendo:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nintendo/Nintendo.yaml
+    path: ./ruleset/nintendo.yaml
+    interval: 86400
+  game:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash/Game/Game.yaml
+    path: ./ruleset/game.yaml
+    interval: 86400
+rules:
+  - RULE-SET,bilibili,BiliBili
+  - RULE-SET,nintendo,Nintendo
+  - RULE-SET,game,GAME
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,去广告,AD拦截
+  - RULE-SET,AdGuardSDNSFilter,AD拦截
+  - RULE-SET,EasyPrivacy,AD拦截
+  - RULE-SET,icloud,Apple
+  - RULE-SET,apple,Apple
+  - RULE-SET,telegramcidr,Telegram,no-resolve
+  - RULE-SET,youtube,YouTube
+  - RULE-SET,google,Google
+  - RULE-SET,streaming,GlobalMedia
+  - RULE-SET,steamCN,DIRECT
+  - RULE-SET,steam,Steam
+  - RULE-SET,proxy,PROXY
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT,no-resolve
+  - RULE-SET,cncidr,DIRECT
+  - GEOIP,LAN,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT
+  - MATCH,Others
