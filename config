@@ -18,7 +18,7 @@ dns:
 proxy-providers:
   myproxy:
     type: http
-    url: https://proxy-provider-converter-h2gd1dp9w-huimecehe.vercel.app/api/convert?url=https%3A%2F%2Fv1.efshop.cc%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3De1fab658b988422550efc7c4e362ff9c&target=clash
+    url: https://proxy-provider-converter.vercel.app/api/convert?url=https%3A%2F%2Fv1.efshop.cc%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3De1fab658b988422550efc7c4e362ff9c&target=clash
     interval: 172800
     path: ./myproxy.yaml
     health-check:
