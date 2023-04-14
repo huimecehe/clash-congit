@@ -16,11 +16,11 @@ dns:
     fallback: ['https://doh.dns.sb/dns-query', 'https://dns.cloudflare.com/dns-query', 'https://dns.twnic.tw/dns-query', 'tls://8.8.4.4:853']
     fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 proxy-providers:
-  myproxy:
+  myproxy1:
     type: http
     url: https://a.ppconverter.eu.org/api/convert?url=https%3A%2F%2Fv1.efshop.cc%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3De1fab658b988422550efc7c4e362ff9c&target=clash
     interval: 172800
-    path: ./myproxy.yaml
+    path: ./myproxy1.yaml
     health-check:
       enable: true
       interval: 600
@@ -38,7 +38,14 @@ proxy-groups:
   - name: PROXY
     type: select
     use:
-      - myproxy
+      - myproxy1
+      - myproxy2
+    proxies:
+      - DIRECT
+  - name: PROXY1
+    type: select
+    use:
+      - myproxy1
     proxies:
       - DIRECT
   - name: PROXY2
@@ -52,79 +59,78 @@ proxy-groups:
     proxies:
       - DIRECT
       - PROXY
-      - PROXY2
   - name: Nintendo
     type: select
     proxies:
       - PROXY
-      - PROXY2
       - DIRECT
     use:
-      - myproxy
+      - myproxy1
+      - myproxy2
   - name: GAME
     type: select
     proxies:
       - PROXY
-      - PROXY2
       - DIRECT
     use:
-      - myproxy
+      - myproxy1
+      - myproxy2
   - name: Apple
     type: select
     proxies:
       - PROXY
-      - PROXY2
       - DIRECT
     use:
-      - myproxy
+      - myproxy1
+      - myproxy2
   - name: Telegram
     type: select
     proxies:
       - PROXY
-      - PROXY2
       - DIRECT
     use:
-      - myproxy
+      - myproxy1
+      - myproxy2
   - name: YouTube
     type: select
     proxies:
       - PROXY
-      - PROXY2
       - DIRECT
     use:
-      - myproxy
+      - myproxy1
+      - myproxy2
   - name: Google
     type: select
     proxies:
       - PROXY
-      - PROXY2
       - DIRECT
     use:
-      - myproxy
+      - myproxy1
+      - myproxy2
   - name: GlobalMedia
     type: select
     proxies:
       - PROXY
-      - PROXY2
       - DIRECT
     use:
-      - myproxy
+      - myproxy1
+      - myproxy2
   - name: Steam
     type: select
     proxies:
       - PROXY
-      - PROXY2
       - DIRECT
     use:
-      - myproxy
+      - myproxy1
+      - myproxy2
   - name: Others
     type: select
     proxies:
       - DIRECT
       - PROXY
-      - PROXY2
     use:
-      - myproxy
+      - myproxy1
+      - myproxy2
 rule-providers:
   reject:
     type: http
@@ -252,7 +258,6 @@ rules:
   - RULE-SET,streaming,GlobalMedia
   - RULE-SET,steam,Steam
   - RULE-SET,proxy,PROXY
-  - RULE-SET,proxy,PROXY2
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT,no-resolve
   - RULE-SET,cncidr,DIRECT
