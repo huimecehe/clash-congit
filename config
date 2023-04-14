@@ -37,11 +37,10 @@ proxy-providers:
 proxy-groups:
   - name: PROXY
     type: select
-    use:
-      - myproxy1
-      - myproxy2
     proxies:
       - DIRECT
+      - PROXY1
+      - PROXY2
   - name: PROXY1
     type: select
     use:
