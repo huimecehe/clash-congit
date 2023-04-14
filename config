@@ -27,7 +27,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   myproxy2:
     type: http
-    url: https://proxy-provider-converter.vercel.app/api/convert?url=https%3A%2F%2Fzhilianjichang.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3D158defc9d4d919202eb0a26a81349f4d&target=clash
+    url: https://a.ppconverter.eu.org/api/convert?url=https%3A%2F%2Fzhilianjichang.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3D158defc9d4d919202eb0a26a81349f4d&target=clash
     interval: 172800
     path: ./myproxy2.yaml
     health-check:
