@@ -25,6 +25,15 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204
+  myproxy2:
+    type: http
+    url: https://proxy-provider-converter.vercel.app/api/convert?url=https%3A%2F%2Fzhilianjichang.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3D158defc9d4d919202eb0a26a81349f4d&target=clash
+    interval: 172800
+    path: ./myproxy2.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
 proxy-groups:
   - name: PROXY
     type: select
@@ -32,17 +41,23 @@ proxy-groups:
       - myproxy
     proxies:
       - DIRECT
+  - name: PROXY2
+    type: select
+    use:
+      - myproxy2
+    proxies:
+      - DIRECT
   - name: BiliBili
     type: select
     proxies:
       - DIRECT
       - PROXY
-    use:
-      - myproxy
+      - PROXY2
   - name: Nintendo
     type: select
     proxies:
       - PROXY
+      - PROXY2
       - DIRECT
     use:
       - myproxy
@@ -50,6 +65,7 @@ proxy-groups:
     type: select
     proxies:
       - PROXY
+      - PROXY2
       - DIRECT
     use:
       - myproxy
@@ -57,6 +73,7 @@ proxy-groups:
     type: select
     proxies:
       - PROXY
+      - PROXY2
       - DIRECT
     use:
       - myproxy
@@ -64,6 +81,7 @@ proxy-groups:
     type: select
     proxies:
       - PROXY
+      - PROXY2
       - DIRECT
     use:
       - myproxy
@@ -71,6 +89,7 @@ proxy-groups:
     type: select
     proxies:
       - PROXY
+      - PROXY2
       - DIRECT
     use:
       - myproxy
@@ -78,6 +97,7 @@ proxy-groups:
     type: select
     proxies:
       - PROXY
+      - PROXY2
       - DIRECT
     use:
       - myproxy
@@ -85,6 +105,7 @@ proxy-groups:
     type: select
     proxies:
       - PROXY
+      - PROXY2
       - DIRECT
     use:
       - myproxy
@@ -92,6 +113,7 @@ proxy-groups:
     type: select
     proxies:
       - PROXY
+      - PROXY2
       - DIRECT
     use:
       - myproxy
@@ -100,6 +122,7 @@ proxy-groups:
     proxies:
       - DIRECT
       - PROXY
+      - PROXY2
     use:
       - myproxy
 rule-providers:
@@ -229,6 +252,7 @@ rules:
   - RULE-SET,streaming,GlobalMedia
   - RULE-SET,steam,Steam
   - RULE-SET,proxy,PROXY
+  - RULE-SET,proxy,PROXY2
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT,no-resolve
   - RULE-SET,cncidr,DIRECT
