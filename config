@@ -262,9 +262,9 @@ rules:
   - RULE-SET,streaming,GlobalMedia
   - RULE-SET,steam,Steam
   - RULE-SET,proxy,PROXY
-  - RULE-SET,direct,DIRECT
   - RULE-SET,reject,REJECT
   - RULE-SET,AD,REJECT
+  - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT,no-resolve
   - RULE-SET,cncidr,DIRECT
   - GEOIP,LAN,DIRECT,no-resolve
