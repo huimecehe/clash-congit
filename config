@@ -254,8 +254,6 @@ rules:
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,DIRECT
-  - RULE-SET,reject,REJECT
-  - RULE-SET,AD,REJECT
   - RULE-SET,icloud,Apple
   - RULE-SET,apple,Apple
   - RULE-SET,telegramcidr,Telegram,no-resolve
@@ -265,6 +263,8 @@ rules:
   - RULE-SET,steam,Steam
   - RULE-SET,proxy,PROXY
   - RULE-SET,direct,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,AD,REJECT
   - RULE-SET,lancidr,DIRECT,no-resolve
   - RULE-SET,cncidr,DIRECT
   - GEOIP,LAN,DIRECT,no-resolve
