@@ -18,7 +18,7 @@ dns:
 proxy-providers:
   myproxy1:
     type: http
-    url: https://a.ppconverter.eu.org/api/convert?url=https%3A%2F%2Fv1.efshop.cc%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3De1fab658b988422550efc7c4e362ff9c&target=clash
+    url: https://a.ppconverter.eu.org/api/convert?url=https%3A%2F%2Fv1.efshop.cc%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3D56ec3d01c9e34ae521164026efa6b621&target=clash
     interval: 172800
     path: ./myproxy1.yaml
     health-check:
@@ -27,7 +27,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   myproxy2:
     type: http
-    url: https://a.ppconverter.eu.org/api/convert?url=https%3A%2F%2Fzhilianjichang.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3D158defc9d4d919202eb0a26a81349f4d&target=clash
+    url: https://a.ppconverter.eu.org/api/convert?url=https%3A%2F%2Fa.xingjiabijichang.com%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3D3633648f0fda95ed4882ec8d096ae8f1&target=clash
     interval: 172800
     path: ./myproxy2.yaml
     health-check:
