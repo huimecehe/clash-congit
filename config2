@@ -73,73 +73,46 @@ proxy-groups:
     proxies:
       - PROXY
       - DIRECT
-    use:
-      - myproxy1
-      - myproxy2
   - name: GAME
     type: select
     proxies:
       - PROXY
       - DIRECT
-    use:
-      - myproxy1
-      - myproxy2
   - name: Apple
     type: select
     proxies:
       - PROXY
       - DIRECT
-    use:
-      - myproxy1
-      - myproxy2
   - name: Telegram
     type: select
     proxies:
       - PROXY
       - DIRECT
-    use:
-      - myproxy1
-      - myproxy2
   - name: YouTube
     type: select
     proxies:
       - PROXY
       - DIRECT
-    use:
-      - myproxy1
-      - myproxy2
   - name: Google
     type: select
     proxies:
       - PROXY
       - DIRECT
-    use:
-      - myproxy1
-      - myproxy2
   - name: GlobalMedia
     type: select
     proxies:
       - PROXY
       - DIRECT
-    use:
-      - myproxy1
-      - myproxy2
   - name: Steam
     type: select
     proxies:
       - PROXY
       - DIRECT
-    use:
-      - myproxy1
-      - myproxy2
   - name: Others
     type: select
     proxies:
       - DIRECT
       - PROXY
-    use:
-      - myproxy1
-      - myproxy2
 rule-providers:
   reject:
     type: http
@@ -271,6 +244,10 @@ rules:
   - RULE-SET,bilibili,BiliBili
   - RULE-SET,nintendo,Nintendo
   - RULE-SET,OneDrive,OneDrive
+  - RULE-SET,telegramcidr,Telegram,no-resolve
+  - RULE-SET,youtube,YouTube
+  - RULE-SET,google,Google
+  - RULE-SET,steam,Steam
   - RULE-SET,Microsoft,Microsoft
   - RULE-SET,steamCN,DIRECT
   - RULE-SET,game,GAME
@@ -280,11 +257,7 @@ rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,icloud,Apple
   - RULE-SET,apple,Apple
-  - RULE-SET,telegramcidr,Telegram,no-resolve
-  - RULE-SET,youtube,YouTube
-  - RULE-SET,google,Google
   - RULE-SET,streaming,GlobalMedia
-  - RULE-SET,steam,Steam
   - RULE-SET,proxy,PROXY
   - RULE-SET,reject,REJECT
   - RULE-SET,AD,REJECT
