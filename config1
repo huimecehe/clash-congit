@@ -137,12 +137,12 @@ rule-providers:
     url: https://ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt
     path: ./ruleset/reject.yaml
     interval: 86400
- ## AD:
+  AD:
     type: http
     behavior: domain
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Domain.yaml
     path: ./ruleset/AD.yaml
-    interval: 86400
+    interval: 345600
   icloud:
     type: http
     behavior: domain
@@ -263,7 +263,7 @@ rules:
   - RULE-SET,steam,Steam
   - RULE-SET,proxy,PROXY
   - RULE-SET,reject,REJECT
-##  - RULE-SET,AD,REJECT
+  - RULE-SET,AD,REJECT
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT,no-resolve
   - RULE-SET,cncidr,DIRECT
